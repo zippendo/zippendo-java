@@ -4352,9 +4352,10 @@ paths:
       x-accepts:
       - application/json
     patch:
-      description: "Update an existing shipment. Only draft, pending or error shipments\
-        \ can be updated; an applied shipping rule overrides carrier settings and\
-        \ sender party."
+      description: "Update a draft, pending or error shipment; fields left out keep\
+        \ their stored values. A draft becomes pending when the update sets its carrier\
+        \ settings or service point and it has a carrier, or applies a shipping rule,\
+        \ which overrides carrier settings and sender party."
       operationId: updateShipment
       parameters:
       - description: Organization identifier.
@@ -10030,6 +10031,18 @@ components:
       - name
       - servicePointId
       type: object
+    listShippingRules_200_response_data_inner_translations_value:
+      additionalProperties: false
+      properties:
+        name:
+          description: Rate name in this language
+          example: Levering til døren
+          type: string
+        description:
+          description: Rate description in this language
+          example: Leveres inden for 1-2 hverdage
+          type: string
+      type: object
     listShippingRules_200_response_data_inner_additionalParameters_value_anyOf_coordinates_inner:
       anyOf:
       - type: number
@@ -10384,6 +10397,12 @@ components:
         id: rule_01HZX9K2QF
         name: Standard DK
         description: Standard levering i Danmark
+        translations:
+          da:
+            name: Levering til døren
+            description: Leveres inden for 1-2 hverdage
+          de:
+            name: Lieferung bis zur Haustür
         direction: outbound
         carrierId: carr_01HZX9K2QF
         productId: PNL13
@@ -10474,6 +10493,18 @@ components:
           example: Standard levering i Danmark
           nullable: true
           type: string
+        translations:
+          additionalProperties:
+            $ref: "#/components/schemas/listShippingRules_200_response_data_inner_translations_value"
+          default: {}
+          description: Checkout name and description per language
+          example:
+            da:
+              name: Levering til døren
+              description: Leveres inden for 1-2 hverdage
+            de:
+              name: Lieferung bis zur Haustür
+          type: object
         direction:
           default: outbound
           description: Whether this rule is for outbound or inbound (return) shipments
@@ -10673,6 +10704,7 @@ components:
       - receivingCountries
       - returnShippingRuleId
       - services
+      - translations
       - updatedAt
       type: object
     listShippingRules_200_response:
@@ -10682,6 +10714,12 @@ components:
         - id: rule_01HZX9K2QF
           name: Standard DK
           description: Standard levering i Danmark
+          translations:
+            da:
+              name: Levering til døren
+              description: Leveres inden for 1-2 hverdage
+            de:
+              name: Lieferung bis zur Haustür
           direction: outbound
           carrierId: carr_01HZX9K2QF
           productId: PNL13
@@ -10760,6 +10798,12 @@ components:
         - id: rule_01HZX9K2QF
           name: Standard DK
           description: Standard levering i Danmark
+          translations:
+            da:
+              name: Levering til døren
+              description: Leveres inden for 1-2 hverdage
+            de:
+              name: Lieferung bis zur Haustür
           direction: outbound
           carrierId: carr_01HZX9K2QF
           productId: PNL13
@@ -10867,6 +10911,21 @@ components:
       - page
       - total
       - totalPages
+      type: object
+    createShippingRule_request_translations_value:
+      properties:
+        name:
+          description: Checkout name in this language; blank keeps the rule's own
+            name.
+          example: Pakkeshop
+          maxLength: 200
+          type: string
+        description:
+          description: Checkout description in this language; blank keeps the rule's
+            own description.
+          example: Levering til en pakkeshop nær dig
+          maxLength: 200
+          type: string
       type: object
     createShippingRule_request_additionalParameters_value_anyOf:
       properties:
@@ -11118,6 +11177,18 @@ components:
           description: Optional description
           example: Standard levering i Danmark
           type: string
+        translations:
+          additionalProperties:
+            $ref: "#/components/schemas/createShippingRule_request_translations_value"
+          description: Checkout name and description per language; a blank field falls
+            back to the rule's own text
+          example:
+            da:
+              name: Levering til døren
+              description: Leveres inden for 1-2 hverdage
+            de:
+              name: Lieferung bis zur Haustür
+          type: object
         direction:
           default: outbound
           description: Whether this rule is for outbound or inbound (return) shipments
@@ -11277,6 +11348,12 @@ components:
         id: rule_01HZX9K2QF
         name: Standard DK
         description: Standard levering i Danmark
+        translations:
+          da:
+            name: Levering til døren
+            description: Leveres inden for 1-2 hverdage
+          de:
+            name: Lieferung bis zur Haustür
         direction: outbound
         carrierId: carr_01HZX9K2QF
         productId: PNL13
@@ -11327,6 +11404,18 @@ components:
           example: Standard levering i Danmark
           nullable: true
           type: string
+        translations:
+          additionalProperties:
+            $ref: "#/components/schemas/listShippingRules_200_response_data_inner_translations_value"
+          default: {}
+          description: Checkout name and description per language
+          example:
+            da:
+              name: Levering til døren
+              description: Leveres inden for 1-2 hverdage
+            de:
+              name: Lieferung bis zur Haustür
+          type: object
         direction:
           default: outbound
           description: Whether this rule is for outbound or inbound (return) shipments
@@ -11514,6 +11603,7 @@ components:
       - receivingCountries
       - returnShippingRuleId
       - services
+      - translations
       - updatedAt
       type: object
     deleteShippingRule_200_response:
@@ -11539,8 +11629,19 @@ components:
           description: Optional description
           example: Standard levering i Danmark
           type: string
+        translations:
+          additionalProperties:
+            $ref: "#/components/schemas/createShippingRule_request_translations_value"
+          description: Checkout name and description per language; a blank field falls
+            back to the rule's own text
+          example:
+            da:
+              name: Levering til døren
+              description: Leveres inden for 1-2 hverdage
+            de:
+              name: Lieferung bis zur Haustür
+          type: object
         direction:
-          default: outbound
           description: Whether this rule is for outbound or inbound (return) shipments
           enum:
           - outbound
@@ -11588,12 +11689,10 @@ components:
             type: string
           type: array
         emailNotification:
-          default: false
           description: Send an email notification to the receiver
           example: true
           type: boolean
         phoneNotification:
-          default: false
           description: Send an SMS notification to the receiver
           example: false
           type: boolean
@@ -11631,27 +11730,22 @@ components:
             $ref: "#/components/schemas/createShippingRule_request_conditions_inner"
           type: array
         generateProformaInvoice:
-          default: false
           description: Generate proforma invoice for shipments
           example: false
           type: boolean
         generateCommercialInvoice:
-          default: false
           description: Generate commercial invoice for international shipments
           example: false
           type: boolean
         generatePackingList:
-          default: false
           description: Generate a packing slip with parcel and item details
           example: false
           type: boolean
         autoPrintLabels:
-          default: false
           description: Automatically print labels when shipment is sent
           example: false
           type: boolean
         autoPrintDocuments:
-          default: false
           description: Automatically print documents when shipment is sent
           example: false
           type: boolean
@@ -11671,7 +11765,6 @@ components:
           type: string
           example: null
         autoCreateReturnShipment:
-          default: false
           description: Automatically create and send a return shipment on dispatch
           example: false
           type: boolean
@@ -13891,12 +13984,10 @@ components:
         pickupDetails:
           $ref: "#/components/schemas/createShipment_request_pickupDetails"
         termOfTrade:
-          default: DAP
           description: Incoterm governing the shipment.
           example: DAP
           type: string
         status:
-          default: pending
           description: Lifecycle status of the shipment.
           enum:
           - draft
@@ -18443,7 +18534,6 @@ components:
         \ fields (webhook secret/ids, checkout token) cannot be set here."
       properties:
         useWebhooks:
-          default: true
           description: Use webhooks for real-time order sync.
           example: true
           type: boolean
@@ -18459,19 +18549,16 @@ components:
           example: true
           type: boolean
         autoSync:
-          default: false
           description: Periodically poll the channel for new orders.
           example: false
           type: boolean
         syncIntervalMinutes:
-          default: 15
           description: Polling interval in minutes (5-1440).
           example: 15
           maximum: 1440
           minimum: 5
           type: integer
         autoShipOnCreate:
-          default: false
           description: Create a shipment automatically when an order arrives.
           example: false
           type: boolean
@@ -18500,7 +18587,6 @@ components:
             $ref: "#/components/schemas/createOrderChannel_request_settings_shippingMethodMappings_inner"
           type: array
         syncOnlyUnfulfilled:
-          default: true
           description: Only import orders that are not yet fulfilled.
           example: true
           type: boolean
@@ -18515,7 +18601,6 @@ components:
             d(?:\\.\\d+)?)?(?:Z))$"
           type: string
         servicePointCount:
-          default: 6
           description: Number of service points to show at checkout (1-20).
           example: 6
           maximum: 20

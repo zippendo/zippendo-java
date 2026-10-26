@@ -3362,7 +3362,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param apiRequest {@link APIUpdateShipmentRequest}
    * @return CreateShipment201Response
    * @throws ApiException if fails to make API call
@@ -3373,7 +3373,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param apiRequest {@link APIUpdateShipmentRequest}
    * @param headers Optional headers to include in the request
    * @return CreateShipment201Response
@@ -3391,7 +3391,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param apiRequest {@link APIUpdateShipmentRequest}
    * @return ApiResponse&lt;CreateShipment201Response&gt;
    * @throws ApiException if fails to make API call
@@ -3402,7 +3402,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param apiRequest {@link APIUpdateShipmentRequest}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;CreateShipment201Response&gt;
@@ -3417,7 +3417,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param orgId Organization identifier. (required)
    * @param shipmentId Shipment identifier. (required)
    * @param updateShipmentRequest  (required)
@@ -3430,7 +3430,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param orgId Organization identifier. (required)
    * @param shipmentId Shipment identifier. (required)
    * @param updateShipmentRequest  (required)
@@ -3445,7 +3445,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param orgId Organization identifier. (required)
    * @param shipmentId Shipment identifier. (required)
    * @param updateShipmentRequest  (required)
@@ -3458,7 +3458,7 @@ public class ShipmentsApi {
 
   /**
    * Update shipment
-   * Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+   * Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
    * @param orgId Organization identifier. (required)
    * @param shipmentId Shipment identifier. (required)
    * @param updateShipmentRequest  (required)

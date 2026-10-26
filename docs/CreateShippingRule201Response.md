@@ -10,6 +10,7 @@
 |**id** | **String** | Unique shipping rule identifier |  |
 |**name** | **String** | Shipping rule name |  |
 |**description** | **String** | Optional description |  |
+|**translations** | [**Map&lt;String, ListShippingRules200ResponseDataInnerTranslationsValue&gt;**](ListShippingRules200ResponseDataInnerTranslationsValue.md) | Checkout name and description per language |  |
 |**direction** | [**DirectionEnum**](#DirectionEnum) | Whether this rule is for outbound or inbound (return) shipments |  |
 |**carrierId** | **String** | Carrier ID |  |
 |**productId** | **String** | Product ID from carrier |  |

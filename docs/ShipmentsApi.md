@@ -2319,7 +2319,7 @@ ApiResponse<[**TrackShipment200Response**](TrackShipment200Response.md)>
 
 Update shipment
 
-Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
 
 ### Example
 
@@ -2399,7 +2399,7 @@ public class Example {
 
 Update shipment
 
-Update an existing shipment. Only draft, pending or error shipments can be updated; an applied shipping rule overrides carrier settings and sender party.
+Update a draft, pending or error shipment; fields left out keep their stored values. A draft becomes pending when the update sets its carrier settings or service point and it has a carrier, or applies a shipping rule, which overrides carrier settings and sender party.
 
 ### Example
 

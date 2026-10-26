@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zippendo.sdk.model.CreateShippingRuleRequestAdditionalParametersValue;
 import com.zippendo.sdk.model.CreateShippingRuleRequestConditionsInner;
+import com.zippendo.sdk.model.CreateShippingRuleRequestTranslationsValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +47,7 @@ import com.zippendo.sdk.ApiClient;
 @JsonPropertyOrder({
   CreateShippingRuleRequest.JSON_PROPERTY_NAME,
   CreateShippingRuleRequest.JSON_PROPERTY_DESCRIPTION,
+  CreateShippingRuleRequest.JSON_PROPERTY_TRANSLATIONS,
   CreateShippingRuleRequest.JSON_PROPERTY_DIRECTION,
   CreateShippingRuleRequest.JSON_PROPERTY_CARRIER_ID,
   CreateShippingRuleRequest.JSON_PROPERTY_PRODUCT_ID,
@@ -80,6 +82,10 @@ public class CreateShippingRuleRequest {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
   private String description;
+
+  public static final String JSON_PROPERTY_TRANSLATIONS = "translations";
+  @javax.annotation.Nullable
+  private Map<String, CreateShippingRuleRequestTranslationsValue> translations = new HashMap<>();
 
   /**
    * Whether this rule is for outbound or inbound (return) shipments
@@ -252,6 +258,38 @@ public class CreateShippingRuleRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
+  }
+
+
+  public CreateShippingRuleRequest translations(@javax.annotation.Nullable Map<String, CreateShippingRuleRequestTranslationsValue> translations) {
+    this.translations = translations;
+    return this;
+  }
+
+  public CreateShippingRuleRequest putTranslationsItem(String key, CreateShippingRuleRequestTranslationsValue translationsItem) {
+    if (this.translations == null) {
+      this.translations = new HashMap<>();
+    }
+    this.translations.put(key, translationsItem);
+    return this;
+  }
+
+  /**
+   * Checkout name and description per language; a blank field falls back to the rule&#39;s own text
+   * @return translations
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TRANSLATIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Map<String, CreateShippingRuleRequestTranslationsValue> getTranslations() {
+    return translations;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TRANSLATIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTranslations(@javax.annotation.Nullable Map<String, CreateShippingRuleRequestTranslationsValue> translations) {
+    this.translations = translations;
   }
 
 
@@ -945,6 +983,7 @@ public class CreateShippingRuleRequest {
     CreateShippingRuleRequest createShippingRuleRequest = (CreateShippingRuleRequest) o;
     return Objects.equals(this.name, createShippingRuleRequest.name) &&
         Objects.equals(this.description, createShippingRuleRequest.description) &&
+        Objects.equals(this.translations, createShippingRuleRequest.translations) &&
         Objects.equals(this.direction, createShippingRuleRequest.direction) &&
         Objects.equals(this.carrierId, createShippingRuleRequest.carrierId) &&
         Objects.equals(this.productId, createShippingRuleRequest.productId) &&
@@ -977,7 +1016,7 @@ public class CreateShippingRuleRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, direction, carrierId, productId, services, additionalParameters, addressId, receivingCountries, emailNotification, phoneNotification, hashCodeNullable(minWeight), hashCodeNullable(maxWeight), hashCodeNullable(minOrderValue), hashCodeNullable(maxOrderValue), conditions, generateProformaInvoice, generateCommercialInvoice, generatePackingList, autoPrintLabels, autoPrintDocuments, hashCodeNullable(labelPrinterId), hashCodeNullable(documentPrinterId), hashCodeNullable(returnShippingRuleId), autoCreateReturnShipment, hashCodeNullable(brandId));
+    return Objects.hash(name, description, translations, direction, carrierId, productId, services, additionalParameters, addressId, receivingCountries, emailNotification, phoneNotification, hashCodeNullable(minWeight), hashCodeNullable(maxWeight), hashCodeNullable(minOrderValue), hashCodeNullable(maxOrderValue), conditions, generateProformaInvoice, generateCommercialInvoice, generatePackingList, autoPrintLabels, autoPrintDocuments, hashCodeNullable(labelPrinterId), hashCodeNullable(documentPrinterId), hashCodeNullable(returnShippingRuleId), autoCreateReturnShipment, hashCodeNullable(brandId));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -993,6 +1032,7 @@ public class CreateShippingRuleRequest {
     sb.append("class CreateShippingRuleRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    translations: ").append(toIndentedString(translations)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    carrierId: ").append(toIndentedString(carrierId)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
@@ -1069,6 +1109,16 @@ public class CreateShippingRuleRequest {
     // add `description` to the URL query string
     if (getDescription() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDescription()))));
+    }
+
+    // add `translations` to the URL query string
+    if (getTranslations() != null) {
+      for (String _key : getTranslations().keySet()) {
+        if (getTranslations().get(_key) != null) {
+          joiner.add(getTranslations().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%stranslations%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
+      }
     }
 
     // add `direction` to the URL query string

@@ -30,6 +30,7 @@ import com.zippendo.sdk.model.ListShippingRules200ResponseDataInnerCarrier;
 import com.zippendo.sdk.model.ListShippingRules200ResponseDataInnerConditionsInner;
 import com.zippendo.sdk.model.ListShippingRules200ResponseDataInnerLabelPrinter;
 import com.zippendo.sdk.model.ListShippingRules200ResponseDataInnerReturnShippingRule;
+import com.zippendo.sdk.model.ListShippingRules200ResponseDataInnerTranslationsValue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,6 +52,7 @@ import com.zippendo.sdk.ApiClient;
   ListShippingRules200ResponseDataInner.JSON_PROPERTY_ID,
   ListShippingRules200ResponseDataInner.JSON_PROPERTY_NAME,
   ListShippingRules200ResponseDataInner.JSON_PROPERTY_DESCRIPTION,
+  ListShippingRules200ResponseDataInner.JSON_PROPERTY_TRANSLATIONS,
   ListShippingRules200ResponseDataInner.JSON_PROPERTY_DIRECTION,
   ListShippingRules200ResponseDataInner.JSON_PROPERTY_CARRIER_ID,
   ListShippingRules200ResponseDataInner.JSON_PROPERTY_PRODUCT_ID,
@@ -97,6 +99,10 @@ public class ListShippingRules200ResponseDataInner {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
   private String description;
+
+  public static final String JSON_PROPERTY_TRANSLATIONS = "translations";
+  @javax.annotation.Nonnull
+  private Map<String, ListShippingRules200ResponseDataInnerTranslationsValue> translations = new HashMap<>();
 
   /**
    * Whether this rule is for outbound or inbound (return) shipments
@@ -330,6 +336,38 @@ public class ListShippingRules200ResponseDataInner {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
+  }
+
+
+  public ListShippingRules200ResponseDataInner translations(@javax.annotation.Nonnull Map<String, ListShippingRules200ResponseDataInnerTranslationsValue> translations) {
+    this.translations = translations;
+    return this;
+  }
+
+  public ListShippingRules200ResponseDataInner putTranslationsItem(String key, ListShippingRules200ResponseDataInnerTranslationsValue translationsItem) {
+    if (this.translations == null) {
+      this.translations = new HashMap<>();
+    }
+    this.translations.put(key, translationsItem);
+    return this;
+  }
+
+  /**
+   * Checkout name and description per language
+   * @return translations
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TRANSLATIONS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Map<String, ListShippingRules200ResponseDataInnerTranslationsValue> getTranslations() {
+    return translations;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TRANSLATIONS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTranslations(@javax.annotation.Nonnull Map<String, ListShippingRules200ResponseDataInnerTranslationsValue> translations) {
+    this.translations = translations;
   }
 
 
@@ -1176,6 +1214,7 @@ public class ListShippingRules200ResponseDataInner {
     return Objects.equals(this.id, listShippingRules200ResponseDataInner.id) &&
         Objects.equals(this.name, listShippingRules200ResponseDataInner.name) &&
         Objects.equals(this.description, listShippingRules200ResponseDataInner.description) &&
+        Objects.equals(this.translations, listShippingRules200ResponseDataInner.translations) &&
         Objects.equals(this.direction, listShippingRules200ResponseDataInner.direction) &&
         Objects.equals(this.carrierId, listShippingRules200ResponseDataInner.carrierId) &&
         Objects.equals(this.productId, listShippingRules200ResponseDataInner.productId) &&
@@ -1216,7 +1255,7 @@ public class ListShippingRules200ResponseDataInner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, direction, carrierId, productId, services, additionalParameters, addressId, receivingCountries, emailNotification, phoneNotification, minWeight, maxWeight, minOrderValue, maxOrderValue, conditions, generateProformaInvoice, generateCommercialInvoice, generatePackingList, autoPrintLabels, autoPrintDocuments, labelPrinterId, documentPrinterId, returnShippingRuleId, autoCreateReturnShipment, orgId, brandId, createdAt, updatedAt, carrier, address, hashCodeNullable(labelPrinter), hashCodeNullable(documentPrinter), hashCodeNullable(returnShippingRule));
+    return Objects.hash(id, name, description, translations, direction, carrierId, productId, services, additionalParameters, addressId, receivingCountries, emailNotification, phoneNotification, minWeight, maxWeight, minOrderValue, maxOrderValue, conditions, generateProformaInvoice, generateCommercialInvoice, generatePackingList, autoPrintLabels, autoPrintDocuments, labelPrinterId, documentPrinterId, returnShippingRuleId, autoCreateReturnShipment, orgId, brandId, createdAt, updatedAt, carrier, address, hashCodeNullable(labelPrinter), hashCodeNullable(documentPrinter), hashCodeNullable(returnShippingRule));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1233,6 +1272,7 @@ public class ListShippingRules200ResponseDataInner {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    translations: ").append(toIndentedString(translations)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    carrierId: ").append(toIndentedString(carrierId)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
@@ -1322,6 +1362,16 @@ public class ListShippingRules200ResponseDataInner {
     // add `description` to the URL query string
     if (getDescription() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDescription()))));
+    }
+
+    // add `translations` to the URL query string
+    if (getTranslations() != null) {
+      for (String _key : getTranslations().keySet()) {
+        if (getTranslations().get(_key) != null) {
+          joiner.add(getTranslations().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%stranslations%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
+      }
     }
 
     // add `direction` to the URL query string

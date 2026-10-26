@@ -60,7 +60,7 @@ import com.zippendo.sdk.ApiClient;
 public class UpdateOrderChannelRequestSettings {
   public static final String JSON_PROPERTY_USE_WEBHOOKS = "useWebhooks";
   @javax.annotation.Nullable
-  private Boolean useWebhooks = true;
+  private Boolean useWebhooks;
 
   public static final String JSON_PROPERTY_SITE_URL = "siteUrl";
   @javax.annotation.Nullable
@@ -72,15 +72,15 @@ public class UpdateOrderChannelRequestSettings {
 
   public static final String JSON_PROPERTY_AUTO_SYNC = "autoSync";
   @javax.annotation.Nullable
-  private Boolean autoSync = false;
+  private Boolean autoSync;
 
   public static final String JSON_PROPERTY_SYNC_INTERVAL_MINUTES = "syncIntervalMinutes";
   @javax.annotation.Nullable
-  private Integer syncIntervalMinutes = 15;
+  private Integer syncIntervalMinutes;
 
   public static final String JSON_PROPERTY_AUTO_SHIP_ON_CREATE = "autoShipOnCreate";
   @javax.annotation.Nullable
-  private Boolean autoShipOnCreate = false;
+  private Boolean autoShipOnCreate;
 
   public static final String JSON_PROPERTY_DEFAULT_CARRIER_ID = "defaultCarrierId";
   private JsonNullable<String> defaultCarrierId = JsonNullable.<String>undefined();
@@ -97,14 +97,14 @@ public class UpdateOrderChannelRequestSettings {
 
   public static final String JSON_PROPERTY_SYNC_ONLY_UNFULFILLED = "syncOnlyUnfulfilled";
   @javax.annotation.Nullable
-  private Boolean syncOnlyUnfulfilled = true;
+  private Boolean syncOnlyUnfulfilled;
 
   public static final String JSON_PROPERTY_SYNC_ORDERS_SINCE = "syncOrdersSince";
   private JsonNullable<OffsetDateTime> syncOrdersSince = JsonNullable.<OffsetDateTime>undefined();
 
   public static final String JSON_PROPERTY_SERVICE_POINT_COUNT = "servicePointCount";
   @javax.annotation.Nullable
-  private Integer servicePointCount = 6;
+  private Integer servicePointCount;
 
   public UpdateOrderChannelRequestSettings() { 
   }

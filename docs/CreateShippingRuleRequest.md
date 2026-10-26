@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | Shipping rule name |  |
 |**description** | **String** | Optional description |  [optional] |
+|**translations** | [**Map&lt;String, CreateShippingRuleRequestTranslationsValue&gt;**](CreateShippingRuleRequestTranslationsValue.md) | Checkout name and description per language; a blank field falls back to the rule&#39;s own text |  [optional] |
 |**direction** | [**DirectionEnum**](#DirectionEnum) | Whether this rule is for outbound or inbound (return) shipments |  [optional] |
 |**carrierId** | **String** | Carrier ID |  |
 |**productId** | **String** | Product ID from carrier |  |

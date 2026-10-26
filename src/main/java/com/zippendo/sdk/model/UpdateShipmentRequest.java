@@ -128,7 +128,7 @@ public class UpdateShipmentRequest {
 
   public static final String JSON_PROPERTY_TERM_OF_TRADE = "termOfTrade";
   @javax.annotation.Nullable
-  private String termOfTrade = "DAP";
+  private String termOfTrade;
 
   /**
    * Lifecycle status of the shipment.
@@ -179,7 +179,7 @@ public class UpdateShipmentRequest {
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @javax.annotation.Nullable
-  private StatusEnum status = StatusEnum.PENDING;
+  private StatusEnum status;
 
   public static final String JSON_PROPERTY_ORDER_ID = "orderId";
   private JsonNullable<String> orderId = JsonNullable.<String>undefined();
