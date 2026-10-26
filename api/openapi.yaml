@@ -9768,7 +9768,7 @@ components:
     listCarrierProducts_200_response_inner:
       additionalProperties: false
       example:
-        name: PostNord MyPack Home
+        name: PostNord Home
         productId: PNL13
         type: outbound
         description: Home delivery within Denmark
@@ -9823,7 +9823,7 @@ components:
       properties:
         name:
           description: Display name of the carrier product
-          example: PostNord MyPack Home
+          example: PostNord Home
           type: string
         productId:
           description: Unique carrier product identifier
