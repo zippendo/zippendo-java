@@ -21,6 +21,7 @@
 |**postalCode** | **String** | Postal code |  [optional] |
 |**country** | **String** | Country (ISO 3166-1 alpha-2 code) |  [optional] |
 |**customs** | **Map&lt;String, String&gt;** | Organization-wide customs identifiers (EORI, IOSS, VOEC, etc.); null clears all |  [optional] |
+|**packingSlipScanCode** | [**PackingSlipScanCodeEnum**](#PackingSlipScanCodeEnum) | Code printed on packing slips that a scan turns into a print: &#x60;QR&#x60;, &#x60;BARCODE&#x60;, or &#x60;NONE&#x60; for no code. |  [optional] |
 
 
 
@@ -34,6 +35,16 @@
 | GBP | &quot;GBP&quot; |
 | SEK | &quot;SEK&quot; |
 | NOK | &quot;NOK&quot; |
+
+
+
+## Enum: PackingSlipScanCodeEnum
+
+| Name | Value |
+|---- | -----|
+| NONE | &quot;NONE&quot; |
+| QR | &quot;QR&quot; |
+| BARCODE | &quot;BARCODE&quot; |
 
 
 

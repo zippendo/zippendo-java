@@ -7813,6 +7813,9 @@ components:
           - SHIPMENT_DOCUMENT_NOT_FOUND
           - SHIPMENT_ALREADY_SENT
           - SHIPMENT_INVALID_STATE
+          - SHIPMENT_LABEL_NOT_AVAILABLE
+          - SHIPMENT_NOT_READY_TO_SHIP
+          - SCAN_PRINTER_NOT_SET
           - SHIPMENT_SERVICE_POINT_REQUIRED
           - SHIPMENT_SEND_NOT_ATTEMPTED
           - PARCEL_NOT_FOUND
@@ -8188,6 +8191,7 @@ components:
         country: DK
         customs:
           eori: DK12345678
+        packingSlipScanCode: QR
         createdAt: 2026-06-22T14:30:00.000Z
         updatedAt: 2026-06-22T14:30:00.000Z
         _count:
@@ -8270,6 +8274,15 @@ components:
           - sprn
           - voec
           type: object
+        packingSlipScanCode:
+          description: "Code printed on packing slips that a scan turns into a print:\
+            \ `QR`, `BARCODE`, or `NONE` for no code."
+          enum:
+          - NONE
+          - QR
+          - BARCODE
+          example: QR
+          type: string
         createdAt:
           description: Creation timestamp (ISO 8601)
           example: 2026-06-22T14:30:00.000Z
@@ -8287,6 +8300,7 @@ components:
       - description
       - id
       - name
+      - packingSlipScanCode
       - slug
       - updatedAt
       type: object
@@ -8383,6 +8397,15 @@ components:
           - voec
           type: object
           example: null
+        packingSlipScanCode:
+          description: "Code printed on packing slips that a scan turns into a print:\
+            \ `QR`, `BARCODE`, or `NONE` for no code."
+          enum:
+          - NONE
+          - QR
+          - BARCODE
+          example: QR
+          type: string
       type: object
     updateOrg_200_response:
       additionalProperties: false
@@ -8402,6 +8425,7 @@ components:
         country: DK
         customs:
           eori: DK12345678
+        packingSlipScanCode: QR
         createdAt: 2026-06-22T14:30:00.000Z
         updatedAt: 2026-06-22T14:30:00.000Z
       properties:
@@ -8482,6 +8506,15 @@ components:
           - sprn
           - voec
           type: object
+        packingSlipScanCode:
+          description: "Code printed on packing slips that a scan turns into a print:\
+            \ `QR`, `BARCODE`, or `NONE` for no code."
+          enum:
+          - NONE
+          - QR
+          - BARCODE
+          example: QR
+          type: string
         createdAt:
           description: Creation timestamp (ISO 8601)
           example: 2026-06-22T14:30:00.000Z
@@ -8496,6 +8529,7 @@ components:
       - description
       - id
       - name
+      - packingSlipScanCode
       - slug
       - updatedAt
       type: object
@@ -10430,6 +10464,7 @@ components:
         generatePackingList: false
         autoPrintLabels: false
         autoPrintDocuments: false
+        autoPrintTrigger: ON_BOOKING
         labelPrinterId: labelPrinterId
         documentPrinterId: documentPrinterId
         returnShippingRuleId: returnShippingRuleId
@@ -10625,6 +10660,14 @@ components:
           description: Automatically print documents when shipment is sent
           example: false
           type: boolean
+        autoPrintTrigger:
+          description: "When automatic printing starts: `ON_BOOKING` prints as soon\
+            \ as the shipment is sent, `ON_SCAN` waits until the packing slip is scanned."
+          enum:
+          - ON_BOOKING
+          - ON_SCAN
+          example: ON_BOOKING
+          type: string
         labelPrinterId:
           description: ID of the label printer
           nullable: true
@@ -10679,6 +10722,7 @@ components:
       - autoCreateReturnShipment
       - autoPrintDocuments
       - autoPrintLabels
+      - autoPrintTrigger
       - brandId
       - carrier
       - carrierId
@@ -10747,6 +10791,7 @@ components:
           generatePackingList: false
           autoPrintLabels: false
           autoPrintDocuments: false
+          autoPrintTrigger: ON_BOOKING
           labelPrinterId: labelPrinterId
           documentPrinterId: documentPrinterId
           returnShippingRuleId: returnShippingRuleId
@@ -10831,6 +10876,7 @@ components:
           generatePackingList: false
           autoPrintLabels: false
           autoPrintDocuments: false
+          autoPrintTrigger: ON_BOOKING
           labelPrinterId: labelPrinterId
           documentPrinterId: documentPrinterId
           returnShippingRuleId: returnShippingRuleId
@@ -11306,6 +11352,15 @@ components:
           description: Automatically print documents when shipment is sent
           example: false
           type: boolean
+        autoPrintTrigger:
+          default: ON_BOOKING
+          description: "When automatic printing starts: `ON_BOOKING` prints as soon\
+            \ as the shipment is sent, `ON_SCAN` waits until the packing slip is scanned."
+          enum:
+          - ON_BOOKING
+          - ON_SCAN
+          example: ON_BOOKING
+          type: string
         labelPrinterId:
           description: ID of the label printer
           nullable: true
@@ -11381,6 +11436,7 @@ components:
         generatePackingList: false
         autoPrintLabels: false
         autoPrintDocuments: false
+        autoPrintTrigger: ON_BOOKING
         labelPrinterId: labelPrinterId
         documentPrinterId: documentPrinterId
         returnShippingRuleId: returnShippingRuleId
@@ -11536,6 +11592,14 @@ components:
           description: Automatically print documents when shipment is sent
           example: false
           type: boolean
+        autoPrintTrigger:
+          description: "When automatic printing starts: `ON_BOOKING` prints as soon\
+            \ as the shipment is sent, `ON_SCAN` waits until the packing slip is scanned."
+          enum:
+          - ON_BOOKING
+          - ON_SCAN
+          example: ON_BOOKING
+          type: string
         labelPrinterId:
           description: ID of the label printer
           nullable: true
@@ -11579,6 +11643,7 @@ components:
       - autoCreateReturnShipment
       - autoPrintDocuments
       - autoPrintLabels
+      - autoPrintTrigger
       - brandId
       - carrierId
       - conditions
@@ -11749,6 +11814,14 @@ components:
           description: Automatically print documents when shipment is sent
           example: false
           type: boolean
+        autoPrintTrigger:
+          description: "When automatic printing starts: `ON_BOOKING` prints as soon\
+            \ as the shipment is sent, `ON_SCAN` waits until the packing slip is scanned."
+          enum:
+          - ON_BOOKING
+          - ON_SCAN
+          example: ON_BOOKING
+          type: string
         labelPrinterId:
           description: ID of the label printer
           nullable: true
@@ -14130,6 +14203,9 @@ components:
           - SHIPMENT_DOCUMENT_NOT_FOUND
           - SHIPMENT_ALREADY_SENT
           - SHIPMENT_INVALID_STATE
+          - SHIPMENT_LABEL_NOT_AVAILABLE
+          - SHIPMENT_NOT_READY_TO_SHIP
+          - SCAN_PRINTER_NOT_SET
           - SHIPMENT_SERVICE_POINT_REQUIRED
           - SHIPMENT_SEND_NOT_ATTEMPTED
           - PARCEL_NOT_FOUND
@@ -14389,6 +14465,9 @@ components:
           - SHIPMENT_DOCUMENT_NOT_FOUND
           - SHIPMENT_ALREADY_SENT
           - SHIPMENT_INVALID_STATE
+          - SHIPMENT_LABEL_NOT_AVAILABLE
+          - SHIPMENT_NOT_READY_TO_SHIP
+          - SCAN_PRINTER_NOT_SET
           - SHIPMENT_SERVICE_POINT_REQUIRED
           - SHIPMENT_SEND_NOT_ATTEMPTED
           - PARCEL_NOT_FOUND

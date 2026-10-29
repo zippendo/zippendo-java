@@ -54,6 +54,7 @@ import com.zippendo.sdk.ApiClient;
   GetOrg200Response.JSON_PROPERTY_POSTAL_CODE,
   GetOrg200Response.JSON_PROPERTY_COUNTRY,
   GetOrg200Response.JSON_PROPERTY_CUSTOMS,
+  GetOrg200Response.JSON_PROPERTY_PACKING_SLIP_SCAN_CODE,
   GetOrg200Response.JSON_PROPERTY_CREATED_AT,
   GetOrg200Response.JSON_PROPERTY_UPDATED_AT,
   GetOrg200Response.JSON_PROPERTY_COUNT
@@ -106,6 +107,47 @@ public class GetOrg200Response {
 
   public static final String JSON_PROPERTY_CUSTOMS = "customs";
   private JsonNullable<Map<String, String>> customs = JsonNullable.<Map<String, String>>undefined();
+
+  /**
+   * Code printed on packing slips that a scan turns into a print: &#x60;QR&#x60;, &#x60;BARCODE&#x60;, or &#x60;NONE&#x60; for no code.
+   */
+  public enum PackingSlipScanCodeEnum {
+    NONE(String.valueOf("NONE")),
+    
+    QR(String.valueOf("QR")),
+    
+    BARCODE(String.valueOf("BARCODE"));
+
+    private String value;
+
+    PackingSlipScanCodeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PackingSlipScanCodeEnum fromValue(String value) {
+      for (PackingSlipScanCodeEnum b : PackingSlipScanCodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_PACKING_SLIP_SCAN_CODE = "packingSlipScanCode";
+  @javax.annotation.Nonnull
+  private PackingSlipScanCodeEnum packingSlipScanCode;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   @javax.annotation.Nonnull
@@ -542,6 +584,30 @@ public class GetOrg200Response {
   }
 
 
+  public GetOrg200Response packingSlipScanCode(@javax.annotation.Nonnull PackingSlipScanCodeEnum packingSlipScanCode) {
+    this.packingSlipScanCode = packingSlipScanCode;
+    return this;
+  }
+
+  /**
+   * Code printed on packing slips that a scan turns into a print: &#x60;QR&#x60;, &#x60;BARCODE&#x60;, or &#x60;NONE&#x60; for no code.
+   * @return packingSlipScanCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PACKING_SLIP_SCAN_CODE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public PackingSlipScanCodeEnum getPackingSlipScanCode() {
+    return packingSlipScanCode;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PACKING_SLIP_SCAN_CODE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPackingSlipScanCode(@javax.annotation.Nonnull PackingSlipScanCodeEnum packingSlipScanCode) {
+    this.packingSlipScanCode = packingSlipScanCode;
+  }
+
+
   public GetOrg200Response createdAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
     return this;
@@ -640,6 +706,7 @@ public class GetOrg200Response {
         equalsNullable(this.postalCode, getOrg200Response.postalCode) &&
         equalsNullable(this.country, getOrg200Response.country) &&
         equalsNullable(this.customs, getOrg200Response.customs) &&
+        Objects.equals(this.packingSlipScanCode, getOrg200Response.packingSlipScanCode) &&
         Objects.equals(this.createdAt, getOrg200Response.createdAt) &&
         Objects.equals(this.updatedAt, getOrg200Response.updatedAt) &&
         Objects.equals(this.count, getOrg200Response.count);
@@ -651,7 +718,7 @@ public class GetOrg200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, slug, description, currency, hashCodeNullable(vatNumber), hashCodeNullable(billingEmail), hashCodeNullable(companyName), hashCodeNullable(addressLine1), hashCodeNullable(addressLine2), hashCodeNullable(city), hashCodeNullable(postalCode), hashCodeNullable(country), hashCodeNullable(customs), createdAt, updatedAt, count);
+    return Objects.hash(id, name, slug, description, currency, hashCodeNullable(vatNumber), hashCodeNullable(billingEmail), hashCodeNullable(companyName), hashCodeNullable(addressLine1), hashCodeNullable(addressLine2), hashCodeNullable(city), hashCodeNullable(postalCode), hashCodeNullable(country), hashCodeNullable(customs), packingSlipScanCode, createdAt, updatedAt, count);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -679,6 +746,7 @@ public class GetOrg200Response {
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    customs: ").append(toIndentedString(customs)).append("\n");
+    sb.append("    packingSlipScanCode: ").append(toIndentedString(packingSlipScanCode)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
@@ -798,6 +866,11 @@ public class GetOrg200Response {
             "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
             getCustoms().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getCustoms().get(_key)))));
       }
+    }
+
+    // add `packingSlipScanCode` to the URL query string
+    if (getPackingSlipScanCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spackingSlipScanCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPackingSlipScanCode()))));
     }
 
     // add `createdAt` to the URL query string

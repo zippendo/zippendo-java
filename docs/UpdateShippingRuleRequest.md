@@ -29,6 +29,7 @@
 |**generatePackingList** | **Boolean** | Generate a packing slip with parcel and item details |  [optional] |
 |**autoPrintLabels** | **Boolean** | Automatically print labels when shipment is sent |  [optional] |
 |**autoPrintDocuments** | **Boolean** | Automatically print documents when shipment is sent |  [optional] |
+|**autoPrintTrigger** | [**AutoPrintTriggerEnum**](#AutoPrintTriggerEnum) | When automatic printing starts: &#x60;ON_BOOKING&#x60; prints as soon as the shipment is sent, &#x60;ON_SCAN&#x60; waits until the packing slip is scanned. |  [optional] |
 |**labelPrinterId** | **String** | ID of the label printer |  [optional] |
 |**documentPrinterId** | **String** | ID of the document printer |  [optional] |
 |**returnShippingRuleId** | **String** | ID of the return shipping rule |  [optional] |
@@ -43,6 +44,15 @@
 |---- | -----|
 | OUTBOUND | &quot;outbound&quot; |
 | INBOUND | &quot;inbound&quot; |
+
+
+
+## Enum: AutoPrintTriggerEnum
+
+| Name | Value |
+|---- | -----|
+| ON_BOOKING | &quot;ON_BOOKING&quot; |
+| ON_SCAN | &quot;ON_SCAN&quot; |
 
 
 

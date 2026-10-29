@@ -52,7 +52,8 @@ import com.zippendo.sdk.ApiClient;
   UpdateOrgRequest.JSON_PROPERTY_CITY,
   UpdateOrgRequest.JSON_PROPERTY_POSTAL_CODE,
   UpdateOrgRequest.JSON_PROPERTY_COUNTRY,
-  UpdateOrgRequest.JSON_PROPERTY_CUSTOMS
+  UpdateOrgRequest.JSON_PROPERTY_CUSTOMS,
+  UpdateOrgRequest.JSON_PROPERTY_PACKING_SLIP_SCAN_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class UpdateOrgRequest {
@@ -144,6 +145,47 @@ public class UpdateOrgRequest {
 
   public static final String JSON_PROPERTY_CUSTOMS = "customs";
   private JsonNullable<Map<String, String>> customs = JsonNullable.<Map<String, String>>undefined();
+
+  /**
+   * Code printed on packing slips that a scan turns into a print: &#x60;QR&#x60;, &#x60;BARCODE&#x60;, or &#x60;NONE&#x60; for no code.
+   */
+  public enum PackingSlipScanCodeEnum {
+    NONE(String.valueOf("NONE")),
+    
+    QR(String.valueOf("QR")),
+    
+    BARCODE(String.valueOf("BARCODE"));
+
+    private String value;
+
+    PackingSlipScanCodeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PackingSlipScanCodeEnum fromValue(String value) {
+      for (PackingSlipScanCodeEnum b : PackingSlipScanCodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_PACKING_SLIP_SCAN_CODE = "packingSlipScanCode";
+  @javax.annotation.Nullable
+  private PackingSlipScanCodeEnum packingSlipScanCode;
 
   public UpdateOrgRequest() { 
   }
@@ -576,6 +618,30 @@ public class UpdateOrgRequest {
   }
 
 
+  public UpdateOrgRequest packingSlipScanCode(@javax.annotation.Nullable PackingSlipScanCodeEnum packingSlipScanCode) {
+    this.packingSlipScanCode = packingSlipScanCode;
+    return this;
+  }
+
+  /**
+   * Code printed on packing slips that a scan turns into a print: &#x60;QR&#x60;, &#x60;BARCODE&#x60;, or &#x60;NONE&#x60; for no code.
+   * @return packingSlipScanCode
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PACKING_SLIP_SCAN_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public PackingSlipScanCodeEnum getPackingSlipScanCode() {
+    return packingSlipScanCode;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PACKING_SLIP_SCAN_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPackingSlipScanCode(@javax.annotation.Nullable PackingSlipScanCodeEnum packingSlipScanCode) {
+    this.packingSlipScanCode = packingSlipScanCode;
+  }
+
+
   /**
    * Return true if this updateOrg_request object is equal to o.
    */
@@ -601,7 +667,8 @@ public class UpdateOrgRequest {
         equalsNullable(this.city, updateOrgRequest.city) &&
         equalsNullable(this.postalCode, updateOrgRequest.postalCode) &&
         equalsNullable(this.country, updateOrgRequest.country) &&
-        equalsNullable(this.customs, updateOrgRequest.customs);
+        equalsNullable(this.customs, updateOrgRequest.customs) &&
+        Objects.equals(this.packingSlipScanCode, updateOrgRequest.packingSlipScanCode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -610,7 +677,7 @@ public class UpdateOrgRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, slug, description, currency, hashCodeNullable(vatNumber), hashCodeNullable(phone), hashCodeNullable(billingEmail), hashCodeNullable(companyName), hashCodeNullable(addressLine1), hashCodeNullable(addressLine2), hashCodeNullable(city), hashCodeNullable(postalCode), hashCodeNullable(country), hashCodeNullable(customs));
+    return Objects.hash(name, slug, description, currency, hashCodeNullable(vatNumber), hashCodeNullable(phone), hashCodeNullable(billingEmail), hashCodeNullable(companyName), hashCodeNullable(addressLine1), hashCodeNullable(addressLine2), hashCodeNullable(city), hashCodeNullable(postalCode), hashCodeNullable(country), hashCodeNullable(customs), packingSlipScanCode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -638,6 +705,7 @@ public class UpdateOrgRequest {
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    customs: ").append(toIndentedString(customs)).append("\n");
+    sb.append("    packingSlipScanCode: ").append(toIndentedString(packingSlipScanCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -754,6 +822,11 @@ public class UpdateOrgRequest {
             "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
             getCustoms().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getCustoms().get(_key)))));
       }
+    }
+
+    // add `packingSlipScanCode` to the URL query string
+    if (getPackingSlipScanCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spackingSlipScanCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPackingSlipScanCode()))));
     }
 
     return joiner.toString();

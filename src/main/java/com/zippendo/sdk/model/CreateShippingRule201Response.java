@@ -64,6 +64,7 @@ import com.zippendo.sdk.ApiClient;
   CreateShippingRule201Response.JSON_PROPERTY_GENERATE_PACKING_LIST,
   CreateShippingRule201Response.JSON_PROPERTY_AUTO_PRINT_LABELS,
   CreateShippingRule201Response.JSON_PROPERTY_AUTO_PRINT_DOCUMENTS,
+  CreateShippingRule201Response.JSON_PROPERTY_AUTO_PRINT_TRIGGER,
   CreateShippingRule201Response.JSON_PROPERTY_LABEL_PRINTER_ID,
   CreateShippingRule201Response.JSON_PROPERTY_DOCUMENT_PRINTER_ID,
   CreateShippingRule201Response.JSON_PROPERTY_RETURN_SHIPPING_RULE_ID,
@@ -201,6 +202,45 @@ public class CreateShippingRule201Response {
   public static final String JSON_PROPERTY_AUTO_PRINT_DOCUMENTS = "autoPrintDocuments";
   @javax.annotation.Nonnull
   private Boolean autoPrintDocuments = false;
+
+  /**
+   * When automatic printing starts: &#x60;ON_BOOKING&#x60; prints as soon as the shipment is sent, &#x60;ON_SCAN&#x60; waits until the packing slip is scanned.
+   */
+  public enum AutoPrintTriggerEnum {
+    ON_BOOKING(String.valueOf("ON_BOOKING")),
+    
+    ON_SCAN(String.valueOf("ON_SCAN"));
+
+    private String value;
+
+    AutoPrintTriggerEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AutoPrintTriggerEnum fromValue(String value) {
+      for (AutoPrintTriggerEnum b : AutoPrintTriggerEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_AUTO_PRINT_TRIGGER = "autoPrintTrigger";
+  @javax.annotation.Nonnull
+  private AutoPrintTriggerEnum autoPrintTrigger;
 
   public static final String JSON_PROPERTY_LABEL_PRINTER_ID = "labelPrinterId";
   @javax.annotation.Nullable
@@ -833,6 +873,30 @@ public class CreateShippingRule201Response {
   }
 
 
+  public CreateShippingRule201Response autoPrintTrigger(@javax.annotation.Nonnull AutoPrintTriggerEnum autoPrintTrigger) {
+    this.autoPrintTrigger = autoPrintTrigger;
+    return this;
+  }
+
+  /**
+   * When automatic printing starts: &#x60;ON_BOOKING&#x60; prints as soon as the shipment is sent, &#x60;ON_SCAN&#x60; waits until the packing slip is scanned.
+   * @return autoPrintTrigger
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_AUTO_PRINT_TRIGGER, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AutoPrintTriggerEnum getAutoPrintTrigger() {
+    return autoPrintTrigger;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AUTO_PRINT_TRIGGER, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAutoPrintTrigger(@javax.annotation.Nonnull AutoPrintTriggerEnum autoPrintTrigger) {
+    this.autoPrintTrigger = autoPrintTrigger;
+  }
+
+
   public CreateShippingRule201Response labelPrinterId(@javax.annotation.Nullable String labelPrinterId) {
     this.labelPrinterId = labelPrinterId;
     return this;
@@ -1060,6 +1124,7 @@ public class CreateShippingRule201Response {
         Objects.equals(this.generatePackingList, createShippingRule201Response.generatePackingList) &&
         Objects.equals(this.autoPrintLabels, createShippingRule201Response.autoPrintLabels) &&
         Objects.equals(this.autoPrintDocuments, createShippingRule201Response.autoPrintDocuments) &&
+        Objects.equals(this.autoPrintTrigger, createShippingRule201Response.autoPrintTrigger) &&
         Objects.equals(this.labelPrinterId, createShippingRule201Response.labelPrinterId) &&
         Objects.equals(this.documentPrinterId, createShippingRule201Response.documentPrinterId) &&
         Objects.equals(this.returnShippingRuleId, createShippingRule201Response.returnShippingRuleId) &&
@@ -1072,7 +1137,7 @@ public class CreateShippingRule201Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, translations, direction, carrierId, productId, services, additionalParameters, addressId, receivingCountries, emailNotification, phoneNotification, minWeight, maxWeight, minOrderValue, maxOrderValue, conditions, generateProformaInvoice, generateCommercialInvoice, generatePackingList, autoPrintLabels, autoPrintDocuments, labelPrinterId, documentPrinterId, returnShippingRuleId, autoCreateReturnShipment, orgId, brandId, createdAt, updatedAt);
+    return Objects.hash(id, name, description, translations, direction, carrierId, productId, services, additionalParameters, addressId, receivingCountries, emailNotification, phoneNotification, minWeight, maxWeight, minOrderValue, maxOrderValue, conditions, generateProformaInvoice, generateCommercialInvoice, generatePackingList, autoPrintLabels, autoPrintDocuments, autoPrintTrigger, labelPrinterId, documentPrinterId, returnShippingRuleId, autoCreateReturnShipment, orgId, brandId, createdAt, updatedAt);
   }
 
   @Override
@@ -1102,6 +1167,7 @@ public class CreateShippingRule201Response {
     sb.append("    generatePackingList: ").append(toIndentedString(generatePackingList)).append("\n");
     sb.append("    autoPrintLabels: ").append(toIndentedString(autoPrintLabels)).append("\n");
     sb.append("    autoPrintDocuments: ").append(toIndentedString(autoPrintDocuments)).append("\n");
+    sb.append("    autoPrintTrigger: ").append(toIndentedString(autoPrintTrigger)).append("\n");
     sb.append("    labelPrinterId: ").append(toIndentedString(labelPrinterId)).append("\n");
     sb.append("    documentPrinterId: ").append(toIndentedString(documentPrinterId)).append("\n");
     sb.append("    returnShippingRuleId: ").append(toIndentedString(returnShippingRuleId)).append("\n");
@@ -1290,6 +1356,11 @@ public class CreateShippingRule201Response {
     // add `autoPrintDocuments` to the URL query string
     if (getAutoPrintDocuments() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sautoPrintDocuments%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAutoPrintDocuments()))));
+    }
+
+    // add `autoPrintTrigger` to the URL query string
+    if (getAutoPrintTrigger() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sautoPrintTrigger%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAutoPrintTrigger()))));
     }
 
     // add `labelPrinterId` to the URL query string
