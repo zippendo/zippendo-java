@@ -50,7 +50,10 @@ import com.zippendo.sdk.ApiClient;
   ListAvailableCarriers200ResponseInner.JSON_PROPERTY_DEPRECATION_MESSAGE,
   ListAvailableCarriers200ResponseInner.JSON_PROPERTY_BETA,
   ListAvailableCarriers200ResponseInner.JSON_PROPERTY_GENERATES_CUSTOMS_DOCUMENTS,
-  ListAvailableCarriers200ResponseInner.JSON_PROPERTY_GENERATES_COMMERCIAL_INVOICE
+  ListAvailableCarriers200ResponseInner.JSON_PROPERTY_GENERATES_COMMERCIAL_INVOICE,
+  ListAvailableCarriers200ResponseInner.JSON_PROPERTY_CANCELS_SHIPMENTS,
+  ListAvailableCarriers200ResponseInner.JSON_PROPERTY_UNCANCELLABLE_PRODUCT_IDS,
+  ListAvailableCarriers200ResponseInner.JSON_PROPERTY_VERIFIES_CREDENTIALS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ListAvailableCarriers200ResponseInner {
@@ -109,6 +112,18 @@ public class ListAvailableCarriers200ResponseInner {
   public static final String JSON_PROPERTY_GENERATES_COMMERCIAL_INVOICE = "generatesCommercialInvoice";
   @javax.annotation.Nullable
   private Boolean generatesCommercialInvoice;
+
+  public static final String JSON_PROPERTY_CANCELS_SHIPMENTS = "cancelsShipments";
+  @javax.annotation.Nullable
+  private Boolean cancelsShipments;
+
+  public static final String JSON_PROPERTY_UNCANCELLABLE_PRODUCT_IDS = "uncancellableProductIds";
+  @javax.annotation.Nullable
+  private List<String> uncancellableProductIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_VERIFIES_CREDENTIALS = "verifiesCredentials";
+  @javax.annotation.Nullable
+  private Boolean verifiesCredentials;
 
   public ListAvailableCarriers200ResponseInner() { 
   }
@@ -465,6 +480,86 @@ public class ListAvailableCarriers200ResponseInner {
   }
 
 
+  public ListAvailableCarriers200ResponseInner cancelsShipments(@javax.annotation.Nullable Boolean cancelsShipments) {
+    this.cancelsShipments = cancelsShipments;
+    return this;
+  }
+
+  /**
+   * Whether a sent shipment of this carrier can be cancelled from Zippendo.
+   * @return cancelsShipments
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CANCELS_SHIPMENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getCancelsShipments() {
+    return cancelsShipments;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CANCELS_SHIPMENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCancelsShipments(@javax.annotation.Nullable Boolean cancelsShipments) {
+    this.cancelsShipments = cancelsShipments;
+  }
+
+
+  public ListAvailableCarriers200ResponseInner uncancellableProductIds(@javax.annotation.Nullable List<String> uncancellableProductIds) {
+    this.uncancellableProductIds = uncancellableProductIds;
+    return this;
+  }
+
+  public ListAvailableCarriers200ResponseInner addUncancellableProductIdsItem(String uncancellableProductIdsItem) {
+    if (this.uncancellableProductIds == null) {
+      this.uncancellableProductIds = new ArrayList<>();
+    }
+    this.uncancellableProductIds.add(uncancellableProductIdsItem);
+    return this;
+  }
+
+  /**
+   * Products whose shipments this carrier cannot cancel, although it cancels its other products (for example locker deliveries).
+   * @return uncancellableProductIds
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_UNCANCELLABLE_PRODUCT_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<String> getUncancellableProductIds() {
+    return uncancellableProductIds;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_UNCANCELLABLE_PRODUCT_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUncancellableProductIds(@javax.annotation.Nullable List<String> uncancellableProductIds) {
+    this.uncancellableProductIds = uncancellableProductIds;
+  }
+
+
+  public ListAvailableCarriers200ResponseInner verifiesCredentials(@javax.annotation.Nullable Boolean verifiesCredentials) {
+    this.verifiesCredentials = verifiesCredentials;
+    return this;
+  }
+
+  /**
+   * Whether Zippendo checks the credentials with the carrier when the carrier is connected or updated.
+   * @return verifiesCredentials
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_VERIFIES_CREDENTIALS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getVerifiesCredentials() {
+    return verifiesCredentials;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VERIFIES_CREDENTIALS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVerifiesCredentials(@javax.annotation.Nullable Boolean verifiesCredentials) {
+    this.verifiesCredentials = verifiesCredentials;
+  }
+
+
   /**
    * Return true if this listAvailableCarriers_200_response_inner object is equal to o.
    */
@@ -490,12 +585,15 @@ public class ListAvailableCarriers200ResponseInner {
         Objects.equals(this.deprecationMessage, listAvailableCarriers200ResponseInner.deprecationMessage) &&
         Objects.equals(this.beta, listAvailableCarriers200ResponseInner.beta) &&
         Objects.equals(this.generatesCustomsDocuments, listAvailableCarriers200ResponseInner.generatesCustomsDocuments) &&
-        Objects.equals(this.generatesCommercialInvoice, listAvailableCarriers200ResponseInner.generatesCommercialInvoice);
+        Objects.equals(this.generatesCommercialInvoice, listAvailableCarriers200ResponseInner.generatesCommercialInvoice) &&
+        Objects.equals(this.cancelsShipments, listAvailableCarriers200ResponseInner.cancelsShipments) &&
+        Objects.equals(this.uncancellableProductIds, listAvailableCarriers200ResponseInner.uncancellableProductIds) &&
+        Objects.equals(this.verifiesCredentials, listAvailableCarriers200ResponseInner.verifiesCredentials);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, slug, group, description, logo, brandColor, learnMoreUrl, requiredFields, optionalFields, deprecated, deprecationMessage, beta, generatesCustomsDocuments, generatesCommercialInvoice);
+    return Objects.hash(name, slug, group, description, logo, brandColor, learnMoreUrl, requiredFields, optionalFields, deprecated, deprecationMessage, beta, generatesCustomsDocuments, generatesCommercialInvoice, cancelsShipments, uncancellableProductIds, verifiesCredentials);
   }
 
   @Override
@@ -516,6 +614,9 @@ public class ListAvailableCarriers200ResponseInner {
     sb.append("    beta: ").append(toIndentedString(beta)).append("\n");
     sb.append("    generatesCustomsDocuments: ").append(toIndentedString(generatesCustomsDocuments)).append("\n");
     sb.append("    generatesCommercialInvoice: ").append(toIndentedString(generatesCommercialInvoice)).append("\n");
+    sb.append("    cancelsShipments: ").append(toIndentedString(cancelsShipments)).append("\n");
+    sb.append("    uncancellableProductIds: ").append(toIndentedString(uncancellableProductIds)).append("\n");
+    sb.append("    verifiesCredentials: ").append(toIndentedString(verifiesCredentials)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -638,6 +739,25 @@ public class ListAvailableCarriers200ResponseInner {
     // add `generatesCommercialInvoice` to the URL query string
     if (getGeneratesCommercialInvoice() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sgeneratesCommercialInvoice%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGeneratesCommercialInvoice()))));
+    }
+
+    // add `cancelsShipments` to the URL query string
+    if (getCancelsShipments() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scancelsShipments%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCancelsShipments()))));
+    }
+
+    // add `uncancellableProductIds` to the URL query string
+    if (getUncancellableProductIds() != null) {
+      for (int i = 0; i < getUncancellableProductIds().size(); i++) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%suncancellableProductIds%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getUncancellableProductIds().get(i)))));
+      }
+    }
+
+    // add `verifiesCredentials` to the URL query string
+    if (getVerifiesCredentials() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sverifiesCredentials%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVerifiesCredentials()))));
     }
 
     return joiner.toString();

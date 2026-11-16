@@ -27,7 +27,7 @@ All URIs are relative to *https://api.zippendo.com*
 
 Connect carrier
 
-Connects a new carrier to the organization with its configuration.
+Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
 
 ### Example
 
@@ -98,6 +98,7 @@ public class Example {
 | **400** | Default Response |  -  |
 | **403** | Default Response |  -  |
 | **404** | Default Response |  -  |
+| **422** | Default Response |  -  |
 
 ## connectCarrierWithHttpInfo
 
@@ -105,7 +106,7 @@ public class Example {
 
 Connect carrier
 
-Connects a new carrier to the organization with its configuration.
+Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
 
 ### Example
 
@@ -179,6 +180,7 @@ ApiResponse<[**ListCarriers200ResponseDataInner**](ListCarriers200ResponseDataIn
 | **400** | Default Response |  -  |
 | **403** | Default Response |  -  |
 | **404** | Default Response |  -  |
+| **422** | Default Response |  -  |
 
 
 <a id="APIconnectCarrierRequest"></a>
@@ -1076,7 +1078,7 @@ ApiResponse<[**ListCarriers200Response**](ListCarriers200Response.md)>
 
 Update carrier
 
-Updates a connected carrier&#39;s configuration or name.
+Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
 
 ### Example
 
@@ -1149,6 +1151,7 @@ public class Example {
 | **400** | Default Response |  -  |
 | **403** | Default Response |  -  |
 | **404** | Default Response |  -  |
+| **422** | Default Response |  -  |
 
 ## updateCarrierWithHttpInfo
 
@@ -1156,7 +1159,7 @@ public class Example {
 
 Update carrier
 
-Updates a connected carrier&#39;s configuration or name.
+Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
 
 ### Example
 
@@ -1232,6 +1235,7 @@ ApiResponse<[**ListCarriers200ResponseDataInner**](ListCarriers200ResponseDataIn
 | **400** | Default Response |  -  |
 | **403** | Default Response |  -  |
 | **404** | Default Response |  -  |
+| **422** | Default Response |  -  |
 
 
 <a id="APIupdateCarrierRequest"></a>

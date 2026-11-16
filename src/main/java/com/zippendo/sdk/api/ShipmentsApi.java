@@ -658,6 +658,226 @@ public class ShipmentsApi {
   }
 
   /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param apiRequest {@link APICancelShipmentRequest}
+   * @return CreateShipment201Response
+   * @throws ApiException if fails to make API call
+   */
+  public CreateShipment201Response cancelShipment(APICancelShipmentRequest apiRequest) throws ApiException {
+    return cancelShipment(apiRequest, null);
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param apiRequest {@link APICancelShipmentRequest}
+   * @param headers Optional headers to include in the request
+   * @return CreateShipment201Response
+   * @throws ApiException if fails to make API call
+   */
+  public CreateShipment201Response cancelShipment(APICancelShipmentRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    String orgId = apiRequest.orgId();
+    @javax.annotation.Nonnull
+    String shipmentId = apiRequest.shipmentId();
+    return cancelShipment(orgId, shipmentId, headers);
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param apiRequest {@link APICancelShipmentRequest}
+   * @return ApiResponse&lt;CreateShipment201Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CreateShipment201Response> cancelShipmentWithHttpInfo(APICancelShipmentRequest apiRequest) throws ApiException {
+    return cancelShipmentWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param apiRequest {@link APICancelShipmentRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;CreateShipment201Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CreateShipment201Response> cancelShipmentWithHttpInfo(APICancelShipmentRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String orgId = apiRequest.orgId();
+    String shipmentId = apiRequest.shipmentId();
+    return cancelShipmentWithHttpInfo(orgId, shipmentId, headers);
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param orgId Organization identifier. (required)
+   * @param shipmentId Shipment identifier. (required)
+   * @return CreateShipment201Response
+   * @throws ApiException if fails to make API call
+   */
+  public CreateShipment201Response cancelShipment(@javax.annotation.Nonnull String orgId, @javax.annotation.Nonnull String shipmentId) throws ApiException {
+    return cancelShipment(orgId, shipmentId, null);
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param orgId Organization identifier. (required)
+   * @param shipmentId Shipment identifier. (required)
+   * @param headers Optional headers to include in the request
+   * @return CreateShipment201Response
+   * @throws ApiException if fails to make API call
+   */
+  public CreateShipment201Response cancelShipment(@javax.annotation.Nonnull String orgId, @javax.annotation.Nonnull String shipmentId, Map<String, String> headers) throws ApiException {
+    ApiResponse<CreateShipment201Response> localVarResponse = cancelShipmentWithHttpInfo(orgId, shipmentId, headers);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param orgId Organization identifier. (required)
+   * @param shipmentId Shipment identifier. (required)
+   * @return ApiResponse&lt;CreateShipment201Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CreateShipment201Response> cancelShipmentWithHttpInfo(@javax.annotation.Nonnull String orgId, @javax.annotation.Nonnull String shipmentId) throws ApiException {
+    return cancelShipmentWithHttpInfo(orgId, shipmentId, null);
+  }
+
+  /**
+   * Cancel sent shipment
+   * Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+   * @param orgId Organization identifier. (required)
+   * @param shipmentId Shipment identifier. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;CreateShipment201Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CreateShipment201Response> cancelShipmentWithHttpInfo(@javax.annotation.Nonnull String orgId, @javax.annotation.Nonnull String shipmentId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = cancelShipmentRequestBuilder(orgId, shipmentId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("cancelShipment", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<CreateShipment201Response>(
+              localVarResponse.statusCode(),
+              localVarResponse.headers().map(),
+              null
+          );
+        }
+
+        
+        
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        CreateShipment201Response responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<CreateShipment201Response>() {});
+        
+
+        return new ApiResponse<CreateShipment201Response>(
+            localVarResponse.statusCode(),
+            localVarResponse.headers().map(),
+            responseValue
+        );
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder cancelShipmentRequestBuilder(@javax.annotation.Nonnull String orgId, @javax.annotation.Nonnull String shipmentId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'orgId' is set
+    if (orgId == null) {
+      throw new ApiException(400, "Missing the required parameter 'orgId' when calling cancelShipment");
+    }
+    // verify the required parameter 'shipmentId' is set
+    if (shipmentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'shipmentId' when calling cancelShipment");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/orgs/{orgId}/shipments/{shipmentId}/cancel"
+        .replace("{orgId}", ApiClient.urlEncode(orgId.toString()))
+        .replace("{shipmentId}", ApiClient.urlEncode(shipmentId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+
+  public static final class APICancelShipmentRequest {
+    @javax.annotation.Nonnull
+    private String orgId; // Organization identifier. (required)
+    @javax.annotation.Nonnull
+    private String shipmentId; // Shipment identifier. (required)
+
+    private APICancelShipmentRequest(Builder builder) {
+      this.orgId = builder.orgId;
+      this.shipmentId = builder.shipmentId;
+    }
+    @javax.annotation.Nonnull
+    public String orgId() {
+      return orgId;
+    }
+    @javax.annotation.Nonnull
+    public String shipmentId() {
+      return shipmentId;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String orgId;
+      private String shipmentId;
+
+      public Builder orgId(@javax.annotation.Nonnull String orgId) {
+        this.orgId = orgId;
+        return this;
+      }
+      public Builder shipmentId(@javax.annotation.Nonnull String shipmentId) {
+        this.shipmentId = shipmentId;
+        return this;
+      }
+      public APICancelShipmentRequest build() {
+        return new APICancelShipmentRequest(this);
+      }
+    }
+  }
+
+  /**
    * Create return shipment
    * Create and auto-send a return shipment from a dispatched outbound shipment with swapped sender/receiver. Requires a configured return shipping rule. The return is returned with the outcome of sending it: &#x60;dispatched&#x60;, or &#x60;error&#x60; with the carrier&#39;s reasons in &#x60;errors&#x60;. Returns 409 while a return for the same shipment is already being created.
    * @param apiRequest {@link APICreateReturnShipmentRequest}

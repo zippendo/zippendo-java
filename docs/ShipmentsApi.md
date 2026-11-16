@@ -8,6 +8,8 @@ All URIs are relative to *https://api.zippendo.com*
 | [**batchSendShipmentsWithHttpInfo**](ShipmentsApi.md#batchSendShipmentsWithHttpInfo) | **POST** /orgs/{orgId}/shipments/batch-send | Batch send shipments |
 | [**batchSplitShipment**](ShipmentsApi.md#batchSplitShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/batch-split-shipment | Batch split shipment |
 | [**batchSplitShipmentWithHttpInfo**](ShipmentsApi.md#batchSplitShipmentWithHttpInfo) | **POST** /orgs/{orgId}/shipments/{shipmentId}/batch-split-shipment | Batch split shipment |
+| [**cancelShipment**](ShipmentsApi.md#cancelShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/cancel | Cancel sent shipment |
+| [**cancelShipmentWithHttpInfo**](ShipmentsApi.md#cancelShipmentWithHttpInfo) | **POST** /orgs/{orgId}/shipments/{shipmentId}/cancel | Cancel sent shipment |
 | [**createReturnShipment**](ShipmentsApi.md#createReturnShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/create-return | Create return shipment |
 | [**createReturnShipmentWithHttpInfo**](ShipmentsApi.md#createReturnShipmentWithHttpInfo) | **POST** /orgs/{orgId}/shipments/{shipmentId}/create-return | Create return shipment |
 | [**createShipment**](ShipmentsApi.md#createShipment) | **POST** /orgs/{orgId}/shipments | Create shipment |
@@ -377,6 +379,183 @@ ApiResponse<[**BatchSplitShipment201Response**](BatchSplitShipment201Response.md
 | **orgId** | **String** | Organization identifier. | |
 | **shipmentId** | **String** | Shipment identifier. | |
 | **batchSplitShipmentRequest** | [**BatchSplitShipmentRequest**](BatchSplitShipmentRequest.md) |  | |
+
+
+
+## cancelShipment
+
+> CreateShipment201Response cancelShipment(cancelShipmentRequest)
+
+Cancel sent shipment
+
+Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+
+### Example
+
+```java
+// Import classes:
+import com.zippendo.sdk.ApiClient;
+import com.zippendo.sdk.ApiException;
+import com.zippendo.sdk.Configuration;
+import com.zippendo.sdk.auth.*;
+import com.zippendo.sdk.models.*;
+import com.zippendo.sdk.api.ShipmentsApi;
+import com.zippendo.sdk.api.ShipmentsApi.*;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zippendo.com");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        ShipmentsApi apiInstance = new ShipmentsApi(defaultClient);
+        String orgId = "org_1a2b3c4d"; // String | Organization identifier.
+        String shipmentId = "shp_4d9e7a2f"; // String | Shipment identifier.
+        try {
+            APIcancelShipmentRequest request = APIcancelShipmentRequest.newBuilder()
+                .orgId(orgId)
+                .shipmentId(shipmentId)
+                .build();
+            CreateShipment201Response result = apiInstance.cancelShipment(request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ShipmentsApi#cancelShipment");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+|    Name      |    Type       | Description   |     Notes    |
+|------------- | ------------- | ------------- | -------------|
+| cancelShipmentRequest | [**APIcancelShipmentRequest**](ShipmentsApi.md#APIcancelShipmentRequest)|-|-|
+
+### Return type
+
+[**CreateShipment201Response**](CreateShipment201Response.md)
+
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Default Response |  -  |
+| **400** | Default Response |  -  |
+| **403** | Default Response |  -  |
+| **404** | Default Response |  -  |
+| **409** | Default Response |  -  |
+| **422** | Default Response |  -  |
+| **503** | Default Response |  -  |
+
+## cancelShipmentWithHttpInfo
+
+> ApiResponse<CreateShipment201Response> cancelShipmentWithHttpInfo(cancelShipmentRequest)
+
+Cancel sent shipment
+
+Cancel a sent shipment with its carrier. The shipment becomes &#x60;cancelled&#x60; when the carrier confirms at once; a carrier that confirms later leaves it &#x60;dispatched&#x60; with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it &#x60;dispatched&#x60; with each parcel&#39;s outcome in its activity. Only carriers whose &#x60;cancelsShipments&#x60; is true accept it, except products listed in &#x60;uncancellableProductIds&#x60;; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+
+### Example
+
+```java
+// Import classes:
+import com.zippendo.sdk.ApiClient;
+import com.zippendo.sdk.ApiException;
+import com.zippendo.sdk.ApiResponse;
+import com.zippendo.sdk.Configuration;
+import com.zippendo.sdk.auth.*;
+import com.zippendo.sdk.models.*;
+import com.zippendo.sdk.api.ShipmentsApi;
+import com.zippendo.sdk.api.ShipmentsApi.*;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zippendo.com");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        ShipmentsApi apiInstance = new ShipmentsApi(defaultClient);
+        String orgId = "org_1a2b3c4d"; // String | Organization identifier.
+        String shipmentId = "shp_4d9e7a2f"; // String | Shipment identifier.
+        try {
+            APIcancelShipmentRequest request = APIcancelShipmentRequest.newBuilder()
+                .orgId(orgId)
+                .shipmentId(shipmentId)
+                .build();
+            ApiResponse<CreateShipment201Response> response = apiInstance.cancelShipmentWithHttpInfo(request);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ShipmentsApi#cancelShipment");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+|    Name      |    Type       | Description   |     Notes    |
+|------------- | ------------- | ------------- | -------------|
+| cancelShipmentRequest | [**APIcancelShipmentRequest**](ShipmentsApi.md#APIcancelShipmentRequest)|-|-|
+
+### Return type
+
+ApiResponse<[**CreateShipment201Response**](CreateShipment201Response.md)>
+
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Default Response |  -  |
+| **400** | Default Response |  -  |
+| **403** | Default Response |  -  |
+| **404** | Default Response |  -  |
+| **409** | Default Response |  -  |
+| **422** | Default Response |  -  |
+| **503** | Default Response |  -  |
+
+
+<a id="APIcancelShipmentRequest"></a>
+## APIcancelShipmentRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **orgId** | **String** | Organization identifier. | |
+| **shipmentId** | **String** | Shipment identifier. | |
 
 
 

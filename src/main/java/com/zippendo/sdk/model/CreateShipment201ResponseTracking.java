@@ -40,6 +40,8 @@ import com.zippendo.sdk.ApiClient;
   CreateShipment201ResponseTracking.JSON_PROPERTY_URL,
   CreateShipment201ResponseTracking.JSON_PROPERTY_NUMBER,
   CreateShipment201ResponseTracking.JSON_PROPERTY_LABEL_FREE_CODE,
+  CreateShipment201ResponseTracking.JSON_PROPERTY_EXPECTED_PICKUP_DATE,
+  CreateShipment201ResponseTracking.JSON_PROPERTY_CANCELLATION_REQUESTED_AT,
   CreateShipment201ResponseTracking.JSON_PROPERTY_QR_CODE_LINK,
   CreateShipment201ResponseTracking.JSON_PROPERTY_QR_CODE_DATA_URI,
   CreateShipment201ResponseTracking.JSON_PROPERTY_QR_CODE_URL
@@ -54,6 +56,12 @@ public class CreateShipment201ResponseTracking {
 
   public static final String JSON_PROPERTY_LABEL_FREE_CODE = "labelFreeCode";
   private JsonNullable<String> labelFreeCode = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_EXPECTED_PICKUP_DATE = "expectedPickupDate";
+  private JsonNullable<String> expectedPickupDate = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_CANCELLATION_REQUESTED_AT = "cancellationRequestedAt";
+  private JsonNullable<String> cancellationRequestedAt = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_QR_CODE_LINK = "qrCodeLink";
   private JsonNullable<String> qrCodeLink = JsonNullable.<String>undefined();
@@ -160,6 +168,70 @@ public class CreateShipment201ResponseTracking {
 
   public void setLabelFreeCode(@javax.annotation.Nullable String labelFreeCode) {
     this.labelFreeCode = JsonNullable.<String>of(labelFreeCode);
+  }
+
+
+  public CreateShipment201ResponseTracking expectedPickupDate(@javax.annotation.Nullable String expectedPickupDate) {
+    this.expectedPickupDate = JsonNullable.<String>of(expectedPickupDate);
+    return this;
+  }
+
+  /**
+   * The day the carrier plans to collect the parcel, for carriers that choose the pickup day at booking (WebrinQ return pickups).
+   * @return expectedPickupDate
+   */
+  @javax.annotation.Nullable
+  @JsonIgnore
+  public String getExpectedPickupDate() {
+        return expectedPickupDate.orElse(null);
+  }
+
+  @JsonProperty(value = JSON_PROPERTY_EXPECTED_PICKUP_DATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getExpectedPickupDate_JsonNullable() {
+    return expectedPickupDate;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_EXPECTED_PICKUP_DATE)
+  public void setExpectedPickupDate_JsonNullable(JsonNullable<String> expectedPickupDate) {
+    this.expectedPickupDate = expectedPickupDate;
+  }
+
+  public void setExpectedPickupDate(@javax.annotation.Nullable String expectedPickupDate) {
+    this.expectedPickupDate = JsonNullable.<String>of(expectedPickupDate);
+  }
+
+
+  public CreateShipment201ResponseTracking cancellationRequestedAt(@javax.annotation.Nullable String cancellationRequestedAt) {
+    this.cancellationRequestedAt = JsonNullable.<String>of(cancellationRequestedAt);
+    return this;
+  }
+
+  /**
+   * When a cancellation was sent to a carrier that confirms it later. The shipment stays dispatched until the carrier reports it cancelled.
+   * @return cancellationRequestedAt
+   */
+  @javax.annotation.Nullable
+  @JsonIgnore
+  public String getCancellationRequestedAt() {
+        return cancellationRequestedAt.orElse(null);
+  }
+
+  @JsonProperty(value = JSON_PROPERTY_CANCELLATION_REQUESTED_AT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getCancellationRequestedAt_JsonNullable() {
+    return cancellationRequestedAt;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CANCELLATION_REQUESTED_AT)
+  public void setCancellationRequestedAt_JsonNullable(JsonNullable<String> cancellationRequestedAt) {
+    this.cancellationRequestedAt = cancellationRequestedAt;
+  }
+
+  public void setCancellationRequestedAt(@javax.annotation.Nullable String cancellationRequestedAt) {
+    this.cancellationRequestedAt = JsonNullable.<String>of(cancellationRequestedAt);
   }
 
 
@@ -274,6 +346,8 @@ public class CreateShipment201ResponseTracking {
     return equalsNullable(this.url, createShipment201ResponseTracking.url) &&
         equalsNullable(this.number, createShipment201ResponseTracking.number) &&
         equalsNullable(this.labelFreeCode, createShipment201ResponseTracking.labelFreeCode) &&
+        equalsNullable(this.expectedPickupDate, createShipment201ResponseTracking.expectedPickupDate) &&
+        equalsNullable(this.cancellationRequestedAt, createShipment201ResponseTracking.cancellationRequestedAt) &&
         equalsNullable(this.qrCodeLink, createShipment201ResponseTracking.qrCodeLink) &&
         equalsNullable(this.qrCodeDataUri, createShipment201ResponseTracking.qrCodeDataUri) &&
         equalsNullable(this.qrCodeUrl, createShipment201ResponseTracking.qrCodeUrl);
@@ -285,7 +359,7 @@ public class CreateShipment201ResponseTracking {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(url), hashCodeNullable(number), hashCodeNullable(labelFreeCode), hashCodeNullable(qrCodeLink), hashCodeNullable(qrCodeDataUri), hashCodeNullable(qrCodeUrl));
+    return Objects.hash(hashCodeNullable(url), hashCodeNullable(number), hashCodeNullable(labelFreeCode), hashCodeNullable(expectedPickupDate), hashCodeNullable(cancellationRequestedAt), hashCodeNullable(qrCodeLink), hashCodeNullable(qrCodeDataUri), hashCodeNullable(qrCodeUrl));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -302,6 +376,8 @@ public class CreateShipment201ResponseTracking {
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    number: ").append(toIndentedString(number)).append("\n");
     sb.append("    labelFreeCode: ").append(toIndentedString(labelFreeCode)).append("\n");
+    sb.append("    expectedPickupDate: ").append(toIndentedString(expectedPickupDate)).append("\n");
+    sb.append("    cancellationRequestedAt: ").append(toIndentedString(cancellationRequestedAt)).append("\n");
     sb.append("    qrCodeLink: ").append(toIndentedString(qrCodeLink)).append("\n");
     sb.append("    qrCodeDataUri: ").append(toIndentedString(qrCodeDataUri)).append("\n");
     sb.append("    qrCodeUrl: ").append(toIndentedString(qrCodeUrl)).append("\n");
@@ -362,6 +438,16 @@ public class CreateShipment201ResponseTracking {
     // add `labelFreeCode` to the URL query string
     if (getLabelFreeCode() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slabelFreeCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLabelFreeCode()))));
+    }
+
+    // add `expectedPickupDate` to the URL query string
+    if (getExpectedPickupDate() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sexpectedPickupDate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExpectedPickupDate()))));
+    }
+
+    // add `cancellationRequestedAt` to the URL query string
+    if (getCancellationRequestedAt() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scancellationRequestedAt%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCancellationRequestedAt()))));
     }
 
     // add `qrCodeLink` to the URL query string

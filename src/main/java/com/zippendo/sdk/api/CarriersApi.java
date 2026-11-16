@@ -177,7 +177,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param apiRequest {@link APIConnectCarrierRequest}
    * @return ListCarriers200ResponseDataInner
    * @throws ApiException if fails to make API call
@@ -188,7 +188,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param apiRequest {@link APIConnectCarrierRequest}
    * @param headers Optional headers to include in the request
    * @return ListCarriers200ResponseDataInner
@@ -204,7 +204,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param apiRequest {@link APIConnectCarrierRequest}
    * @return ApiResponse&lt;ListCarriers200ResponseDataInner&gt;
    * @throws ApiException if fails to make API call
@@ -215,7 +215,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param apiRequest {@link APIConnectCarrierRequest}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;ListCarriers200ResponseDataInner&gt;
@@ -229,7 +229,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param orgId Organization ID (required)
    * @param connectCarrierRequest  (required)
    * @return ListCarriers200ResponseDataInner
@@ -241,7 +241,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param orgId Organization ID (required)
    * @param connectCarrierRequest  (required)
    * @param headers Optional headers to include in the request
@@ -255,7 +255,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param orgId Organization ID (required)
    * @param connectCarrierRequest  (required)
    * @return ApiResponse&lt;ListCarriers200ResponseDataInner&gt;
@@ -267,7 +267,7 @@ public class CarriersApi {
 
   /**
    * Connect carrier
-   * Connects a new carrier to the organization with its configuration.
+   * Connects a new carrier to the organization with its configuration. Carriers that support it check the credentials with the carrier first and refuse them with CARRIER_AUTH_FAILED or CARRIER_CONFIG_INVALID.
    * @param orgId Organization ID (required)
    * @param connectCarrierRequest  (required)
    * @param headers Optional headers to include in the request
@@ -1670,7 +1670,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param apiRequest {@link APIUpdateCarrierRequest}
    * @return ListCarriers200ResponseDataInner
    * @throws ApiException if fails to make API call
@@ -1681,7 +1681,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param apiRequest {@link APIUpdateCarrierRequest}
    * @param headers Optional headers to include in the request
    * @return ListCarriers200ResponseDataInner
@@ -1699,7 +1699,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param apiRequest {@link APIUpdateCarrierRequest}
    * @return ApiResponse&lt;ListCarriers200ResponseDataInner&gt;
    * @throws ApiException if fails to make API call
@@ -1710,7 +1710,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param apiRequest {@link APIUpdateCarrierRequest}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;ListCarriers200ResponseDataInner&gt;
@@ -1725,7 +1725,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @param updateCarrierRequest  (required)
@@ -1738,7 +1738,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @param updateCarrierRequest  (required)
@@ -1753,7 +1753,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @param updateCarrierRequest  (required)
@@ -1766,7 +1766,7 @@ public class CarriersApi {
 
   /**
    * Update carrier
-   * Updates a connected carrier&#39;s configuration or name.
+   * Updates a connected carrier&#39;s configuration or name. A new configuration is checked with the carrier first where the carrier supports it, as on connect.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @param updateCarrierRequest  (required)
