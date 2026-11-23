@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | Type of billing add-on |  |
+|**type** | [**TypeEnum**](#TypeEnum) | Type of billing add-on. Only zippy can be purchased. |  |
 |**quantity** | **BigDecimal** | Number of add-on units purchased |  |
 |**unitPrice** | **BigDecimal** | Price per unit per month, in minor units of the billing currency |  |
 |**totalPrice** | **BigDecimal** | Total price per month, in minor units of the billing currency |  |

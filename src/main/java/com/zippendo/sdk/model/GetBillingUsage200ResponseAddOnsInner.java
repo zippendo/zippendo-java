@@ -42,7 +42,7 @@ import com.zippendo.sdk.ApiClient;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class GetBillingUsage200ResponseAddOnsInner {
   /**
-   * Type of billing add-on
+   * Type of billing add-on. Only zippy can be purchased.
    */
   public enum TypeEnum {
     EXTRA_CARRIER(String.valueOf("extra_carrier")),
@@ -103,7 +103,7 @@ public class GetBillingUsage200ResponseAddOnsInner {
   }
 
   /**
-   * Type of billing add-on
+   * Type of billing add-on. Only zippy can be purchased.
    * @return type
    */
   @javax.annotation.Nonnull

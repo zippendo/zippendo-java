@@ -17,6 +17,7 @@
 |**isPickupAvailable** | **Boolean** | Whether carrier pickup is available for this product |  |
 |**services** | [**List&lt;ListCarrierProducts200ResponseInnerServicesInner&gt;**](ListCarrierProducts200ResponseInnerServicesInner.md) | Additional services available for this product |  [optional] |
 |**additionalParameters** | [**List&lt;ListCarrierProducts200ResponseInnerAdditionalParametersInner&gt;**](ListCarrierProducts200ResponseInnerAdditionalParametersInner.md) | Extra parameters that can or must be supplied for this product |  [optional] |
+|**dangerousGoods** | [**List&lt;ListCarrierProducts200ResponseInnerDangerousGoodsInner&gt;**](ListCarrierProducts200ResponseInnerDangerousGoodsInner.md) | How this product declares dangerous goods: the service to request and the parameters that carry the details. Absent when the product cannot carry them. |  [optional] |
 |**weightLimits** | [**ListCarrierProducts200ResponseInnerWeightLimits**](ListCarrierProducts200ResponseInnerWeightLimits.md) |  |  [optional] |
 
 

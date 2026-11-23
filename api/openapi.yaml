@@ -8060,6 +8060,8 @@ components:
           - WMS_DANGEROUS_GOODS_UNSUPPORTED
           - WMS_LABEL_IN_PROGRESS
           - WMS_LABEL_ALREADY_BOOKED
+          - WMS_PROVIDER_CREDENTIALS_INVALID
+          - WMS_PROVIDER_REQUEST_FAILED
           - WMS_LABEL_COUNT_MISMATCH
           - DATA_EXPORT_NOT_FOUND
           - DATA_EXPORT_IN_PROGRESS
@@ -9934,6 +9936,114 @@ components:
       - name
       - type
       type: object
+    listCarrierProducts_200_response_inner_dangerousGoods_inner_parameters:
+      additionalProperties: false
+      description: Which additional parameters carry the details of the goods. Absent
+        ones are not sent.
+      example:
+        unNumber: lqUnNumber
+        hazardClass: lqClass
+        packingGroup: lqPackagingGroup
+        properShippingName: adrDescription
+        weightGramsPerParcel: lqSubWeight
+        weightKg: adrWeight
+        weightKgPerParcel: dangerousGoodsLqWeight
+      properties:
+        unNumber:
+          description: Key of the additional parameter that takes the four-digit UN
+            number.
+          example: lqUnNumber
+          type: string
+        hazardClass:
+          description: Key of the additional parameter that takes the ADR hazard class.
+          example: lqClass
+          type: string
+        packingGroup:
+          description: "Key of the additional parameter that takes the packing group\
+            \ (I, II or III)."
+          example: lqPackagingGroup
+          type: string
+        properShippingName:
+          description: Key of the additional parameter that takes the proper shipping
+            name.
+          example: adrDescription
+          type: string
+        weightGramsPerParcel:
+          description: "Key of the additional parameter that takes the weight of the\
+            \ dangerous goods in the heaviest parcel, in grams."
+          example: lqSubWeight
+          type: string
+        weightKg:
+          description: "Key of the additional parameter that takes the total weight\
+            \ of the dangerous goods, in kg."
+          example: adrWeight
+          type: string
+        weightKgPerParcel:
+          description: "Key of the additional parameter that takes the weight of the\
+            \ dangerous goods in the heaviest parcel, in kg."
+          example: dangerousGoodsLqWeight
+          type: string
+      type: object
+    listCarrierProducts_200_response_inner_dangerousGoods_inner:
+      additionalProperties: false
+      example:
+        kind: limited_quantity
+        serviceId: LQ
+        parameters:
+          unNumber: lqUnNumber
+          hazardClass: lqClass
+          packingGroup: lqPackagingGroup
+          properShippingName: adrDescription
+          weightGramsPerParcel: lqSubWeight
+          weightKg: adrWeight
+          weightKgPerParcel: dangerousGoodsLqWeight
+        ownedParameters:
+        - lqUnNumber
+        - lqPackagingGroup
+        - lqClass
+        - lqCode
+        - lqSubWeight
+        singleParcel: true
+      properties:
+        kind:
+          description: "`limited_quantity`: dangerous goods packed in limited quantities\
+            \ (LQ). `regulated`: fully regulated dangerous goods (ADR)."
+          enum:
+          - limited_quantity
+          - regulated
+          example: limited_quantity
+          type: string
+        serviceId:
+          description: The service that declares these dangerous goods to the carrier.
+          example: LQ
+          type: string
+        parameters:
+          $ref: "#/components/schemas/listCarrierProducts_200_response_inner_dangerousGoods_inner_parameters"
+        ownedParameters:
+          description: "Every additional parameter that describes the declared goods,\
+            \ including those `parameters` does not fill. A declaration replaces them\
+            \ all, so a value saved for other goods is never sent."
+          example:
+          - lqUnNumber
+          - lqPackagingGroup
+          - lqClass
+          - lqCode
+          - lqSubWeight
+          items:
+            description: Key of an additional parameter.
+            example: lqCode
+            type: string
+          type: array
+        singleParcel:
+          description: The carrier takes this declaration on a shipment of one parcel
+            only.
+          example: true
+          type: boolean
+      required:
+      - kind
+      - parameters
+      - serviceId
+      type: object
     listCarrierProducts_200_response_inner_weightLimits:
       additionalProperties: false
       description: Allowed weight range for parcels using this product
@@ -10015,6 +10125,41 @@ components:
           requiredService:
           - A6
           - A6
+        dangerousGoods:
+        - kind: limited_quantity
+          serviceId: LQ
+          parameters:
+            unNumber: lqUnNumber
+            hazardClass: lqClass
+            packingGroup: lqPackagingGroup
+            properShippingName: adrDescription
+            weightGramsPerParcel: lqSubWeight
+            weightKg: adrWeight
+            weightKgPerParcel: dangerousGoodsLqWeight
+          ownedParameters:
+          - lqUnNumber
+          - lqPackagingGroup
+          - lqClass
+          - lqCode
+          - lqSubWeight
+          singleParcel: true
+        - kind: limited_quantity
+          serviceId: LQ
+          parameters:
+            unNumber: lqUnNumber
+            hazardClass: lqClass
+            packingGroup: lqPackagingGroup
+            properShippingName: adrDescription
+            weightGramsPerParcel: lqSubWeight
+            weightKg: adrWeight
+            weightKgPerParcel: dangerousGoodsLqWeight
+          ownedParameters:
+          - lqUnNumber
+          - lqPackagingGroup
+          - lqClass
+          - lqCode
+          - lqSubWeight
+          singleParcel: true
         weightLimits:
           min: 0.1
           max: 35
@@ -10072,6 +10217,13 @@ components:
           description: Extra parameters that can or must be supplied for this product
           items:
             $ref: "#/components/schemas/listCarrierProducts_200_response_inner_additionalParameters_inner"
+          type: array
+        dangerousGoods:
+          description: "How this product declares dangerous goods: the service to\
+            \ request and the parameters that carry the details. Absent when the product\
+            \ cannot carry them."
+          items:
+            $ref: "#/components/schemas/listCarrierProducts_200_response_inner_dangerousGoods_inner"
           type: array
         weightLimits:
           $ref: "#/components/schemas/listCarrierProducts_200_response_inner_weightLimits"
@@ -14501,6 +14653,8 @@ components:
           - WMS_DANGEROUS_GOODS_UNSUPPORTED
           - WMS_LABEL_IN_PROGRESS
           - WMS_LABEL_ALREADY_BOOKED
+          - WMS_PROVIDER_CREDENTIALS_INVALID
+          - WMS_PROVIDER_REQUEST_FAILED
           - WMS_LABEL_COUNT_MISMATCH
           - DATA_EXPORT_NOT_FOUND
           - DATA_EXPORT_IN_PROGRESS
@@ -14768,6 +14922,8 @@ components:
           - WMS_DANGEROUS_GOODS_UNSUPPORTED
           - WMS_LABEL_IN_PROGRESS
           - WMS_LABEL_ALREADY_BOOKED
+          - WMS_PROVIDER_CREDENTIALS_INVALID
+          - WMS_PROVIDER_REQUEST_FAILED
           - WMS_LABEL_COUNT_MISMATCH
           - DATA_EXPORT_NOT_FOUND
           - DATA_EXPORT_IN_PROGRESS
@@ -19390,12 +19546,12 @@ components:
       additionalProperties: false
       properties:
         type:
-          description: Type of billing add-on
+          description: Type of billing add-on. Only zippy can be purchased.
           enum:
           - extra_carrier
           - extra_channel
           - zippy
-          example: extra_carrier
+          example: zippy
           type: string
         quantity:
           description: Number of add-on units purchased

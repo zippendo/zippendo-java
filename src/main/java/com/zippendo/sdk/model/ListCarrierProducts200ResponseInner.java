@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zippendo.sdk.model.ListCarrierProducts200ResponseInnerAdditionalParametersInner;
+import com.zippendo.sdk.model.ListCarrierProducts200ResponseInnerDangerousGoodsInner;
 import com.zippendo.sdk.model.ListCarrierProducts200ResponseInnerServicesInner;
 import com.zippendo.sdk.model.ListCarrierProducts200ResponseInnerWeightLimits;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ import com.zippendo.sdk.ApiClient;
   ListCarrierProducts200ResponseInner.JSON_PROPERTY_IS_PICKUP_AVAILABLE,
   ListCarrierProducts200ResponseInner.JSON_PROPERTY_SERVICES,
   ListCarrierProducts200ResponseInner.JSON_PROPERTY_ADDITIONAL_PARAMETERS,
+  ListCarrierProducts200ResponseInner.JSON_PROPERTY_DANGEROUS_GOODS,
   ListCarrierProducts200ResponseInner.JSON_PROPERTY_WEIGHT_LIMITS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
@@ -126,6 +128,10 @@ public class ListCarrierProducts200ResponseInner {
   public static final String JSON_PROPERTY_ADDITIONAL_PARAMETERS = "additionalParameters";
   @javax.annotation.Nullable
   private List<ListCarrierProducts200ResponseInnerAdditionalParametersInner> additionalParameters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_DANGEROUS_GOODS = "dangerousGoods";
+  @javax.annotation.Nullable
+  private List<ListCarrierProducts200ResponseInnerDangerousGoodsInner> dangerousGoods = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEIGHT_LIMITS = "weightLimits";
   @javax.annotation.Nullable
@@ -406,6 +412,38 @@ public class ListCarrierProducts200ResponseInner {
   }
 
 
+  public ListCarrierProducts200ResponseInner dangerousGoods(@javax.annotation.Nullable List<ListCarrierProducts200ResponseInnerDangerousGoodsInner> dangerousGoods) {
+    this.dangerousGoods = dangerousGoods;
+    return this;
+  }
+
+  public ListCarrierProducts200ResponseInner addDangerousGoodsItem(ListCarrierProducts200ResponseInnerDangerousGoodsInner dangerousGoodsItem) {
+    if (this.dangerousGoods == null) {
+      this.dangerousGoods = new ArrayList<>();
+    }
+    this.dangerousGoods.add(dangerousGoodsItem);
+    return this;
+  }
+
+  /**
+   * How this product declares dangerous goods: the service to request and the parameters that carry the details. Absent when the product cannot carry them.
+   * @return dangerousGoods
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DANGEROUS_GOODS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<ListCarrierProducts200ResponseInnerDangerousGoodsInner> getDangerousGoods() {
+    return dangerousGoods;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DANGEROUS_GOODS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDangerousGoods(@javax.annotation.Nullable List<ListCarrierProducts200ResponseInnerDangerousGoodsInner> dangerousGoods) {
+    this.dangerousGoods = dangerousGoods;
+  }
+
+
   public ListCarrierProducts200ResponseInner weightLimits(@javax.annotation.Nullable ListCarrierProducts200ResponseInnerWeightLimits weightLimits) {
     this.weightLimits = weightLimits;
     return this;
@@ -452,12 +490,13 @@ public class ListCarrierProducts200ResponseInner {
         Objects.equals(this.isPickupAvailable, listCarrierProducts200ResponseInner.isPickupAvailable) &&
         Objects.equals(this.services, listCarrierProducts200ResponseInner.services) &&
         Objects.equals(this.additionalParameters, listCarrierProducts200ResponseInner.additionalParameters) &&
+        Objects.equals(this.dangerousGoods, listCarrierProducts200ResponseInner.dangerousGoods) &&
         Objects.equals(this.weightLimits, listCarrierProducts200ResponseInner.weightLimits);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, productId, type, description, availableCountries, availableSenderCountries, isServicePoint, isPickupAvailable, services, additionalParameters, weightLimits);
+    return Objects.hash(name, productId, type, description, availableCountries, availableSenderCountries, isServicePoint, isPickupAvailable, services, additionalParameters, dangerousGoods, weightLimits);
   }
 
   @Override
@@ -474,6 +513,7 @@ public class ListCarrierProducts200ResponseInner {
     sb.append("    isPickupAvailable: ").append(toIndentedString(isPickupAvailable)).append("\n");
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    additionalParameters: ").append(toIndentedString(additionalParameters)).append("\n");
+    sb.append("    dangerousGoods: ").append(toIndentedString(dangerousGoods)).append("\n");
     sb.append("    weightLimits: ").append(toIndentedString(weightLimits)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -582,6 +622,16 @@ public class ListCarrierProducts200ResponseInner {
       for (int i = 0; i < getAdditionalParameters().size(); i++) {
         if (getAdditionalParameters().get(i) != null) {
           joiner.add(getAdditionalParameters().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sadditionalParameters%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `dangerousGoods` to the URL query string
+    if (getDangerousGoods() != null) {
+      for (int i = 0; i < getDangerousGoods().size(); i++) {
+        if (getDangerousGoods().get(i) != null) {
+          joiner.add(getDangerousGoods().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sdangerousGoods%s%s", prefix, suffix,
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }

@@ -112,6 +112,8 @@ docs/ListCarrierProductServicePointsRequest.md
 docs/ListCarrierProducts200ResponseInner.md
 docs/ListCarrierProducts200ResponseInnerAdditionalParametersInner.md
 docs/ListCarrierProducts200ResponseInnerAdditionalParametersInnerOptionsInner.md
+docs/ListCarrierProducts200ResponseInnerDangerousGoodsInner.md
+docs/ListCarrierProducts200ResponseInnerDangerousGoodsInnerParameters.md
 docs/ListCarrierProducts200ResponseInnerServicesInner.md
 docs/ListCarrierProducts200ResponseInnerWeightLimits.md
 docs/ListCarriers200Response.md
@@ -323,6 +325,8 @@ src/main/java/com/zippendo/sdk/model/ListCarrierProductServicePointsRequest.java
 src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInner.java
 src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInnerAdditionalParametersInner.java
 src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInnerAdditionalParametersInnerOptionsInner.java
+src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInnerDangerousGoodsInner.java
+src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInnerDangerousGoodsInnerParameters.java
 src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInnerServicesInner.java
 src/main/java/com/zippendo/sdk/model/ListCarrierProducts200ResponseInnerWeightLimits.java
 src/main/java/com/zippendo/sdk/model/ListCarriers200Response.java
