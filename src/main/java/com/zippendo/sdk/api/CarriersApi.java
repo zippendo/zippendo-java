@@ -402,7 +402,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param apiRequest {@link APIDisconnectCarrierRequest}
    * @return String
    * @throws ApiException if fails to make API call
@@ -413,7 +413,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param apiRequest {@link APIDisconnectCarrierRequest}
    * @param headers Optional headers to include in the request
    * @return String
@@ -429,7 +429,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param apiRequest {@link APIDisconnectCarrierRequest}
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -440,7 +440,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param apiRequest {@link APIDisconnectCarrierRequest}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
@@ -454,7 +454,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @return String
@@ -466,7 +466,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @param headers Optional headers to include in the request
@@ -480,7 +480,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @return ApiResponse&lt;String&gt;
@@ -492,7 +492,7 @@ public class CarriersApi {
 
   /**
    * Disconnect carrier
-   * Disconnects a carrier from the organization.
+   * Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
    * @param orgId Organization ID (required)
    * @param carrierId Carrier ID (required)
    * @param headers Optional headers to include in the request

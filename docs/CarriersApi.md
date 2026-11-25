@@ -200,7 +200,7 @@ ApiResponse<[**ListCarriers200ResponseDataInner**](ListCarriers200ResponseDataIn
 
 Disconnect carrier
 
-Disconnects a carrier from the organization.
+Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
 
 ### Example
 
@@ -270,6 +270,7 @@ public class Example {
 | **204** | Default Response |  -  |
 | **403** | Default Response |  -  |
 | **404** | Default Response |  -  |
+| **409** | Default Response |  -  |
 
 ## disconnectCarrierWithHttpInfo
 
@@ -277,7 +278,7 @@ public class Example {
 
 Disconnect carrier
 
-Disconnects a carrier from the organization.
+Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
 
 ### Example
 
@@ -350,6 +351,7 @@ ApiResponse<**String**>
 | **204** | Default Response |  -  |
 | **403** | Default Response |  -  |
 | **404** | Default Response |  -  |
+| **409** | Default Response |  -  |
 
 
 <a id="APIdisconnectCarrierRequest"></a>
